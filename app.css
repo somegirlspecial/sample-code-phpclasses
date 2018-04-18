@@ -51,8 +51,8 @@
 	section { padding: 1em;}
 	
 	#app { background-color: #1A1A1A; color: #fff;}
-	#users { padding:1em; border: 1px solid #000;}
-	#client { padding:1em; background-color: #eee;margin: 0 2em 2em 0;}
+	#users { padding:1em; background-color: #eee; box-shadow: 1px 1px 2px #aaa;}
+	#client { padding:1em; background-color: #eee;margin: 0 2em 2em 0; box-shadow: 1px 1px 2px #aaa;}
 	@media screen and (max-width: 468px)
 	{
 		.col-6,

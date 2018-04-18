@@ -42,41 +42,42 @@ $app->run();
 		
 		<!-- Briefing -->
 		<h1 class="subheading">Briefing</h1>
+		<h2><?php echo $app->assignment->briefing->get('name');?></h2>
+
 		<div class="col-8">
 		
-			<h2><?=$app->assignment->briefing->get('name');?></h2>
 			<!-- Client -->
 			<div id="client">
 				<dl>
 					<dt>Client:</dt>
-					<dd><?=$app->assignment->client->getFullCompany();?></dd>
+					<dd><?php echo $app->assignment->client->getFullCompany();?></dd>
 					<dt>Budget:</dt>
 					<dd>Nader te bepalen</dd>
 					<dt>Deadline:</dt>
 					<dd>Today</dd>
 				</dl>
 			</div>
-			<p class="lead">Goal: <?=$app->assignment->briefing->get('goal');?></p>
-			<p><?=nl2br($app->assignment->get('description'));?></p>
+			<p class="lead">Goal: <?php echo $app->assignment->briefing->get('goal');?></p>
+			<p><?php print nl2br($app->assignment->get('description'));?></p>
 		
 		</div>
 		<div class="col-4">
 			<!-- Users -->
 			<div id="users">
-				<h3 class="subheading">Assigned to:</h3>
-				<? foreach($app->assignment->users as $user):?>
-				<h2><?=$user->get('name');?></h2>
+				<h1 class="subheading">Assigned</h1>
+				<?php foreach($app->assignment->users as $user):?>
+				<h2><?php echo $user->get('name');?></h2>
 				<dl>
 					<dt>Role:</dt>
-					<dd><?=$user->get('role');?></dd>
+					<dd><?php echo $user->get('role');?></dd>
 					<dt>Rate: </dt>
-					<dd><?=$user->getRate();?></dd>
+					<dd><?php echo $user->getRate();?></dd>
 					<dt>Hours: </dt>
 					<dd><?php echo $user->getAvailableHours();?></dd>
 					<dt>Contact: </dt>
-					<dd><?=$user->getContactInfo();?> </dd>
+					<dd><?php echo $user->getContactInfo();?> </dd>
 				</dl>
-				<? endforeach;?>
+				<?php endforeach;?>
 			</div>
 		</div>
 			
@@ -95,20 +96,20 @@ $app->run();
 				$problem->solve();
 			?>		
 			<table width="100%" class="color-table">
-				<? foreach($problem->input['cell_names'] as $i => $c):?>
-				<? if($i%3==0): ?>
+				<?php foreach($problem->input['cell_names'] as $i => $c):?>
+				<?php if($i%3==0): ?>
 				<tr>
-				<? endif;?>
-					<td style="background-color: <?=$problem->input['cell_colors'][$i]?>">
-						<h3 style="color: <?=$problem->input['cell_text_colors'][$i]?>;"><?=$c;?></h3>
-						<p style="color: <?=$problem->input['cell_text_colors'][$i]?>;">
-							- <?=ucfirst($problem->input['cell_text_colors'][$i])?> - 
+				<?php endif;?>
+					<td style="background-color: <?php echo $problem->input['cell_colors'][$i]?>">
+						<h3 style="color: <?php echo $problem->input['cell_text_colors'][$i]?>;"><?php echo $c;?></h3>
+						<p style="color: <?php echo $problem->input['cell_text_colors'][$i]?>;">
+							- <?php echo ucfirst($problem->input['cell_text_colors'][$i])?> - 
 						</p>
 					</td>
-				<? if($i%3==2): ?>
+				<?php if($i%3==2): ?>
 				</tr>
-				<? endif; ?>
-				<? endforeach; ?>
+				<?php endif; ?>
+				<?php endforeach; ?>
 			</table>
 			</div>
 		</div>
@@ -116,20 +117,20 @@ $app->run();
 			<div class="box">
 			<p>Solution</p>
 			<table width="100%" class="color-table">
-				<? foreach($problem->output['table'] as $i => $c): ?>
-				<? if($i%3==0): ?>
+				<?php foreach($problem->output['table'] as $i => $c): ?>
+				<?php if($i%3==0): ?>
 				<tr>
-				<? endif;?>
-					<td style="background-color: <?=$c['color']?>">
-						<h3 style="color: <?=($c['lightness'] < 0.6) ? 'white': 'black'?>"><?=$c['id'];?></h3>
-						<p style="color:  <?=$c['color']?>; background-color: <?=($c['lightness'] < 0.6) ? 'white': 'black'?>">
-							<?=ucfirst($c['color'])?>
+				<?php endif;?>
+					<td style="background-color: <?php echo $c['color']?>;">
+						<h3 style="color: <?php echo ($c['lightness'] < 0.6) ? 'white': 'black'?>"><?php echo $c['id'];?></h3>
+						<p style="color:  <?php echo $c['color']?>; background-color: <?php echo ($c['lightness'] < 0.6) ? 'white': 'black'?>">
+							<?php echo ucfirst($c['color'])?>
 						</p>
 					</td>
-				<? if($i%3==2): ?>
+				<?php if($i%3==2): ?>
 				</tr>
-				<? endif; ?>
-				<? endforeach; ?>
+				<?php endif; ?>
+				<?php endforeach; ?>
 			</table>
 			</div>
 		</div>
