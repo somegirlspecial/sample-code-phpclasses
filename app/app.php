@@ -34,8 +34,8 @@ class App
 		 */
 		$this->assignment = new Assignment();
 		
-			$client 		= new Company("Bravouxe");
-			$client->setAddress("Oosteinde 23", "1017 WT", "Amsterdam");
+			$client 		= new Company("[Company]");
+			$client->setAddress("[address]", "[postcode]", "[city]");
 			
 			// Create the briefing 
 			$goal 			= "Realise something out of the box to show of your code skills.";
